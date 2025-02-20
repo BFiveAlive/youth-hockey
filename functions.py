@@ -36,9 +36,12 @@ def model_charts(df):
   fig1, ax1 = plt.subplots()
   ax1.scatter(out_chart['pred_diff'], out_chart['goal_diff'])
   ax1.plot(out_chart['pred_diff'], intercept + slope*out_chart['pred_diff'], 'r')
+  ax1.axvline(x=0, color='black', linestyle='--') 
+  ax1.axhline(y=0, color='black', linestyle='--') 
   ax1.set_xlabel('Predicted Goal Difference')
   ax1.set_ylabel('Goal Difference')
   ax1.set_title('Predicted vs Actual Goal Difference')
+
   
 
   # FILTERED METRICS
