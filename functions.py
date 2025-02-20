@@ -34,8 +34,9 @@ def model_charts(df):
   slope, intercept, rvalue, pvalue, stderr = stats.linregress(out_chart['pred_diff'], out_chart['goal_diff'])
 
   fig1, ax1 = plt.subplots()
-  ax1.scatter(out_chart['pred_diff'], out_chart['goal_diff'])
+  ax1.scatter(out_chart['pred_diff'], out_chart['goal_diff'], s=10, alpha=1)
   ax1.plot(out_chart['pred_diff'], intercept + slope*out_chart['pred_diff'], 'r')
+  ax1.plot(out_chart['pred_diff'], out_chart['pred_diff'], color='black', linestyle='--')
   ax1.axvline(x=0, color='black', linestyle='--') 
   ax1.axhline(y=0, color='black', linestyle='--')
   ax1.axvspan(-2, 2, facecolor='green', alpha=0.3) 
@@ -54,7 +55,7 @@ def model_charts(df):
   residuals = out_chart['pred_diff'] - out_chart['goal_diff']
 
   fig2, ax2 = plt.subplots()
-  ax2.scatter(out_chart['pred_diff'], residuals)
+  ax2.scatter(out_chart['pred_diff'], residuals, s=6, alpha=0.8)
   ax2.set_xlabel('Predicted Difference')
   ax2.set_ylabel('Residuals')
   ax2.set_title('Residual Plot')
@@ -66,7 +67,7 @@ def model_charts(df):
   slope, intercept, rvalue, pvalue, stderr = stats.linregress(out_chart['pred_points'], out_chart['home_points'])
 
   fig3, ax3 = plt.subplots()
-  ax3.scatter(out_chart['pred_points'], out_chart['home_points'])
+  ax3.scatter(out_chart['pred_points'], out_chart['home_points'], s=6, alpha=0.8)
   ax3.plot(out_chart['pred_points'], intercept + slope*out_chart['pred_points'], 'r')
   ax3.set_xlabel('Predicted Points')
   ax3.set_ylabel('Actual Points')
